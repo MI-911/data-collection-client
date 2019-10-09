@@ -1,0 +1,12 @@
+<div class="row m-2">
+    <div class="col-md-2">
+        <img [src]="movie.poster" [title]="movie.title" class="img-fluid" />
+    </div>
+    <div class="col-md-auto">
+        <h4 class="lead">{{ movie.title }} ({{ movie.year }})</h4>
+
+        <button (click)="emit(movie, 1)" class="btn btn-success mr-2">Like</button>
+        <button (click)="emit(movie, -1)" class="btn btn-danger mr-2">Dislike</button>
+        <button (click)="emit(movie, 0)" class="btn btn-warning">Don't know</button>
+    </div>
+</div>

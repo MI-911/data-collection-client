@@ -1,0 +1,15 @@
+<div class="container mt-3 mb-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card shadow">
+        <div class="card-header">
+          <h2 class="lead text-primary">MovieGuesser</h2>
+        </div>
+
+        <div class="card-body" [ngBusy]="loading">
+          <app-movie-list [movies]="samples" (result)="initialResult($event)"></app-movie-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
