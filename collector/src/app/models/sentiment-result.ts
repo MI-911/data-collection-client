@@ -1,4 +1,4 @@
 export class SentimentResult {
-    liked: number[] = [];
-    disliked: number[] = [];
+    liked: string[] = [];
+    disliked: string[] = [];
 }

@@ -1,12 +1,12 @@
-import { MovieSentiment } from './../../models/movie-sentiment';
+import { EntitySentiment } from '../../models/entity-sentiment';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
-import { Movie } from 'src/app/models/movie';
+import { Entity } from 'src/app/models/entity';
 import { SentimentResult } from 'src/app/models/sentiment-result';
 
 @Component({
-  selector: 'app-movie-list',
-  templateUrl: './movie-list.component.html',
+  selector: 'app-entity-list',
+  templateUrl: './entity-list.component.html',
   animations: [
     // the fade-in/fade-out animation.
     trigger('simpleFadeAnimation', [
@@ -17,17 +17,17 @@ import { SentimentResult } from 'src/app/models/sentiment-result';
       // fade in when created. this could also be written as transition('void => *')
       transition(':enter', [
         style({opacity: 0}),
-        animate(300 )
+        animate(250 )
       ]),
 
       // fade out when destroyed. this could also be written as transition('void => *')
       transition(':leave',
-        animate(300, style({opacity: 0})))
+        animate(250, style({opacity: 0})))
     ])
   ]
 })
 export class MovieListComponent implements OnInit {
-  @Input() movies: Movie[];
+  @Input() entities: Entity[];
   @Output() result = new EventEmitter<SentimentResult>();
 
   private sentimentResult = new SentimentResult;
@@ -37,16 +37,16 @@ export class MovieListComponent implements OnInit {
   ngOnInit() {
   }
 
-  sentiment(event: MovieSentiment) {
-    this.movies.splice(this.movies.indexOf(event.movie), 1);
+  sentiment(event: EntitySentiment) {
+    this.entities.splice(this.entities.indexOf(event.entity), 1);
 
     if (event.sentiment === 1) {
-      this.sentimentResult.liked.push(event.movie.id);
+      this.sentimentResult.liked.push(event.entity.uri);
     } else if (event.sentiment === -1) {
-      this.sentimentResult.disliked.push(event.movie.id);
+      this.sentimentResult.disliked.push(event.entity.uri);
     }
 
-    if (!this.movies.length) {
+    if (!this.entities.length) {
       this.result.emit(this.sentimentResult);
     }
   }

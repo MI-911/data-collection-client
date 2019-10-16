@@ -1,8 +1,0 @@
- <div *ngIf="movies">
-   <h5>Please state your preferences on these movies</h5>
-
-   <div *ngFor="let movie of movies; let i = index" [@simpleFadeAnimation]="'in'">
-      <hr />
-      <app-movie [movie]="movie" (sentiment)="sentiment($event)"></app-movie>
-   </div>
- </div>

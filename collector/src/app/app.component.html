@@ -7,7 +7,7 @@
         </div>
 
         <div class="card-body" [ngBusy]="loading">
-          <app-movie-list [movies]="samples" (result)="initialResult($event)"></app-movie-list>
+          <app-entity-list [entities]="samples" (result)="initialResult($event)"></app-entity-list>
         </div>
       </div>
     </div>

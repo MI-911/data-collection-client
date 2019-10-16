@@ -1,17 +1,16 @@
 import { SentimentResult } from 'src/app/models/sentiment-result';
-import { environment } from './../../environments/environment';
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Movie } from '../models/movie';
+import { Entity } from '../models/entity';
 @Injectable({
   providedIn: 'root'
 })
-export class MoviesService {
-
+export class EntitiesService {
   constructor(private http: HttpClient) { }
 
   begin() {
-    return this.http.get<Movie[]>(`${environment.apiUrl}/begin`);
+    return this.http.get<Entity[]>(`${environment.apiUrl}/begin`);
   }
 
   entities(result: SentimentResult) {

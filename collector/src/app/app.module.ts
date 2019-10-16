@@ -4,14 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgBusyModule} from 'ng-busy';
-import { MovieComponent } from './components/movie/movie.component';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { EntityComponent } from './components/entity/entity.component';
+import { MovieListComponent } from './components/entity-list/entity-list.component';
+import { StaticFilePipe } from './pipes/static-file.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieComponent,
-    MovieListComponent
+    EntityComponent,
+    MovieListComponent,
+    StaticFilePipe
   ],
   imports: [
     BrowserModule,
