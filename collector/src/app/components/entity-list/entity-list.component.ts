@@ -44,6 +44,8 @@ export class MovieListComponent implements OnInit {
       this.sentimentResult.liked.push(event.entity.uri);
     } else if (event.sentiment === -1) {
       this.sentimentResult.disliked.push(event.entity.uri);
+    } else {
+      this.sentimentResult.unknown.push(event.entity.uri);
     }
 
     if (!this.entities.length) {
