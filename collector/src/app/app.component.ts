@@ -21,6 +21,6 @@ export class AppComponent implements OnInit {
   }
 
   initialResult(result: SentimentResult) {
-    this.loading = this.entitiesService.entities(result).subscribe(data => console.log(data));
+    this.loading = this.entitiesService.entities(result).subscribe(data => this.samples = data);
   }
 }
