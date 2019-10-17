@@ -16,6 +16,9 @@ export class EntityComponent implements OnInit {
   ngOnInit() {
   }
 
+  setSource(event, entity) {
+    event.target.src = `https://imgplaceholder.com/182x268?text=${entity.name}`;
+  }
   emit(entity, sentiment) {
     this.sentiment.emit(new EntitySentiment(entity, sentiment));
   }

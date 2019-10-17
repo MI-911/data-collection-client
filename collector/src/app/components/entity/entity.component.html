@@ -1,6 +1,7 @@
 <div class="row m-2">
     <div class="col-md-2">
-        <img [src]="entity.id | staticFile: [entity.resource]" [title]="entity.title" class="img-fluid" />
+        <img [src]="entity.id | staticFile: [entity.resource]" [title]="entity.name" class="img-fluid"
+             (error)="setSource($event, entity)"/>
     </div>
     <div class="col-md-auto">
         <h4 class="lead">{{ entity.name }}</h4>
