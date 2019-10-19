@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'Data Collector';
   loading: Subscription;
   samples: Entity[];
-  
+
   constructor(private entitiesService: EntitiesService) {
   }
 
@@ -22,5 +22,6 @@ export class AppComponent implements OnInit {
 
   initialResult(result: SentimentResult) {
     this.loading = this.entitiesService.entities(result).subscribe(data => this.samples = data);
+    result.reset_results();
   }
 }
