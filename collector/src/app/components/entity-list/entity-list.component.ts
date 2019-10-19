@@ -49,7 +49,8 @@ export class MovieListComponent implements OnInit {
     }
 
     if (!this.entities.length) {
-      this.result.emit(this.sentimentResult);
+      this.result.emit(Object.assign({}, this.sentimentResult)); // Emit cloned sentiment result
+      this.sentimentResult = new SentimentResult;
     }
   }
 }
