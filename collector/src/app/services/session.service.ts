@@ -7,7 +7,7 @@ import * as uuid from 'uuid';
 export class SessionService {
   constructor() {
     if (!localStorage.getItem('token')) {
-      localStorage.setItem('token', uuid.v4());
+      localStorage.setItem('token', uuid.v1());
     }
   }
 
