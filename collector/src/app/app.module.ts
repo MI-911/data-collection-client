@@ -8,13 +8,15 @@ import { EntityComponent } from './components/entity/entity.component';
 import { MovieListComponent } from './components/entity-list/entity-list.component';
 import { StaticFilePipe } from './pipes/static-file.pipe';
 import { TokenInterceptor } from './interceptors/token-interceptor';
+import { PredictionsComponent } from './components/predictions/predictions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EntityComponent,
     MovieListComponent,
-    StaticFilePipe
+    StaticFilePipe,
+    PredictionsComponent
   ],
   imports: [
     BrowserModule,

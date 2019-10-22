@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   initialResult(result: SentimentResult) {
     this.loading = this.entitiesService.entities(result).subscribe(data => {
       if (data['prediction']) {
+        this.predictions = new Map<string, Entity[]>();
         this.predictions.set('likes', data['likes']); 
         this.predictions.set('dislikes', data['dilikes']);
       } else {

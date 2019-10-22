@@ -6,13 +6,12 @@
     <div class="col-md-auto align-self-center">
         <h4 class="lead">{{ entity.name }}</h4>
         <h3 class="lead text-muted mb-auto">{{ entity.description }}</h3>
-
-        <div class="btn-group mt-3">
-          <button (click)="emit(entity, 1)" class="btn btn-success"><i class="far fa-thumbs-up"></i> Like</button>
-          <button (click)="emit(entity, -1)" class="btn btn-danger"><i class="far fa-thumbs-down"></i> Dislike</button>
-          <button (click)="emit(entity, 0)" class="btn btn-warning">Don't know</button>
-
+        <div *ngIf="withOptions">
+            <div class="btn-group mt-3">
+                <button (click)="emit(entity, 1)" class="btn btn-success"><i class="far fa-thumbs-up"></i> Like</button>
+                <button (click)="emit(entity, -1)" class="btn btn-danger"><i class="far fa-thumbs-down"></i> Dislike</button>
+                <button (click)="emit(entity, 0)" class="btn btn-warning">Don't know</button>
+            </div>
         </div>
-
     </div>
 </div>
