@@ -2,18 +2,28 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">You will probably like these</h5>
-            <div *ngFor="let entity of posPredictions; let i = index">
-                <hr />
-                <app-entity [entity]="entity" [withOptions]="true" (sentiment)="sentiment($event)"></app-entity>
+            <div *ngIf="numWrongPos > 0">
+                <h6 class="card-title">Whoops! We'll do better next time...</h6>
+            </div>
+            <div *ngIf="posPredictions.length">
+                <div *ngFor="let entity of posPredictions; let i = index">
+                    <hr />
+                    <app-entity [entity]="entity" [withOptions]="true" (sentiment)="sentiment($event)"></app-entity>
+                </div>
             </div>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">... and dislike these!</h5>
-            <div *ngFor="let entity of negPredictions; let i = index">
-                <hr />
-                <app-entity [entity]="entity" [withOptions]="true" (sentiment)="sentiment($event)"></app-entity>
+            <div *ngIf="numWrongNeg > 0">
+                <h6 class="card-title">Whoops! We'll do better next time...</h6>
+            </div>
+            <div *ngIf="negPredictions.length">
+                <div *ngFor="let entity of negPredictions; let i = index">
+                    <hr />
+                    <app-entity [entity]="entity" [withOptions]="true" (sentiment)="sentiment($event)"></app-entity>
+                </div>
             </div>
         </div>
     </div>

@@ -14,6 +14,8 @@ export class PredictionsComponent implements OnInit {
   @Output() result = new EventEmitter<SentimentResult>();
 
   private sentimentResult = new SentimentResult;
+  private numWrongPos = 0;
+  private numWrongNeg = 0;
 
   constructor() { }
 
@@ -22,13 +24,16 @@ export class PredictionsComponent implements OnInit {
   }
 
   sentiment(event: EntitySentiment) {
-    let entities = this.posPredictions.some(o => event.entity == o) ? this.posPredictions : this.negPredictions;
+    let isPositive = this.posPredictions.some(o => event.entity == o);
+    let entities = isPositive ? this.posPredictions : this.negPredictions;
 
     entities.splice(entities.indexOf(event.entity), 1);
 
     if (event.sentiment === 1) {
       this.sentimentResult.liked.push(event.entity.uri);
+      if (!isPositive) this.numWrongNeg++;
     } else if (event.sentiment === -1) {
+      if (isPositive) this.numWrongPos++;
       this.sentimentResult.disliked.push(event.entity.uri);
     } else {
       this.sentimentResult.unknown.push(event.entity.uri);
