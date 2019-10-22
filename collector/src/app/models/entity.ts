@@ -4,4 +4,5 @@ export class Entity {
   uri: string;
   resource: string;
   movies: string[];
+  description: string;
 }

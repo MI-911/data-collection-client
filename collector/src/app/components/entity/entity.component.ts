@@ -9,6 +9,7 @@ import { EntitySentiment } from 'src/app/models/entity-sentiment';
 })
 export class EntityComponent implements OnInit {
   @Input() entity: Entity;
+  @Input() withOptions: boolean = true;
   @Output() sentiment = new EventEmitter<EntitySentiment>();
 
   constructor() { }

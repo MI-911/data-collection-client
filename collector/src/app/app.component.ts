@@ -12,7 +12,9 @@ export class AppComponent implements OnInit {
   title = 'Data Collector';
   loading: Subscription;
   samples: Entity[];
-  
+  negPredictions: Entity[];
+  posPredictions: Entity[];
+
   constructor(private entitiesService: EntitiesService) {
   }
 
@@ -21,6 +23,21 @@ export class AppComponent implements OnInit {
   }
 
   initialResult(result: SentimentResult) {
-    this.loading = this.entitiesService.entities(result).subscribe(data => this.samples = data);
+    if (this.posPredictions || this.negPredictions) {
+      console.log("Sending the following to the server:");
+      console.log(result);
+      this.entitiesService.entities(result);
+      return;
+    }
+
+    this.loading = this.entitiesService.entities(result).subscribe(data => {
+      if (data['prediction']) {
+        this.posPredictions = data['likes'] as Entity[]; 
+        this.negPredictions = data['dislikes'] as Entity[];
+      } else {
+        this.samples = data;
+      }
+    });
+    result.reset_results();
   }
 }
