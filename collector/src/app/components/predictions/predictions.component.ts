@@ -7,11 +7,13 @@ import { Entity } from 'src/app/models/entity';
   styleUrls: ['./predictions.component.css']
 })
 export class PredictionsComponent implements OnInit {
-  @Input() predictions: Map<string, Entity[]>;
+  @Input() negPredictions: Entity[];
+  @Input() posPredictions: Entity[];
 
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

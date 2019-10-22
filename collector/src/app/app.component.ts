@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
   title = 'Data Collector';
   loading: Subscription;
   samples: Entity[];
-  predictions: Map<string, Entity[]>;
+  negPredictions: Entity[];
+  posPredictions: Entity[];
 
   constructor(private entitiesService: EntitiesService) {
   }
@@ -24,9 +25,8 @@ export class AppComponent implements OnInit {
   initialResult(result: SentimentResult) {
     this.loading = this.entitiesService.entities(result).subscribe(data => {
       if (data['prediction']) {
-        this.predictions = new Map<string, Entity[]>();
-        this.predictions.set('likes', data['likes']); 
-        this.predictions.set('dislikes', data['dilikes']);
+        this.posPredictions = data['likes'] as Entity[]; 
+        this.negPredictions = data['dislikes'] as Entity[];
       } else {
         this.samples = data;
       }

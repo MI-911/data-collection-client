@@ -1,21 +1,20 @@
-<div *ngIf="predictions">
-    <div class="card-group">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">You will probably like these</h5>
-                <div *ngFor="let entity of predictions['likes']; let i = index" [@simpleFadeAnimation]="'in'">
-                    <hr />
-                    <app-entity [entity]="entity" (sentiment)="sentiment($event)"></app-entity>
-                </div>
+<div class="card-group">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">You will probably like these</h5>
+            <div *ngFor="let entity of posPredictions; let i = index">
+                <hr />
+                <app-entity [entity]="entity" [withOptions]="true"></app-entity>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">... and dislike these!</h5>
-                <div *ngFor="let entity of predictions['dislikes']; let i = index" [@simpleFadeAnimation]="'in'">
-                    <hr />
-                    <app-entity [entity]="entity" [withOptions]="false" (sentiment)="sentiment($event)"></app-entity>
-                </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">... and dislike these!</h5>
+            <div *ngFor="let entity of negPredictions; let i = index">
+                <hr />
+                <app-entity [entity]="entity" [withOptions]="true"></app-entity>
             </div>
         </div>
-  </div>
+    </div>
+</div>

@@ -8,11 +8,11 @@
 
         <div class="card-body" [ngBusy]="loading">
           <ng-container
-            *ngIf="predictions; then hasPredictions; else hasEntities">
+            *ngIf="posPredictions; then hasPredictions; else hasEntities">
           </ng-container>
 
           <ng-template #hasPredictions>
-            <app-predictions [predictions]="predictions"></app-predictions>
+            <app-predictions [posPredictions]="posPredictions" [negPredictions]="negPredictions"></app-predictions>
           </ng-template>
 
           <ng-template #hasEntities>
