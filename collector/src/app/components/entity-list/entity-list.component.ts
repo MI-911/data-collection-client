@@ -26,11 +26,14 @@ import { SentimentResult } from 'src/app/models/sentiment-result';
     ])
   ]
 })
+
 export class MovieListComponent implements OnInit {
   @Input() entities: Entity[];
   @Output() result = new EventEmitter<SentimentResult>();
 
   private sentimentResult = new SentimentResult;
+  private nCurrent: number = 0;
+  private nMax: number = 30;
 
   constructor() { }
 
@@ -41,8 +44,10 @@ export class MovieListComponent implements OnInit {
     this.entities.splice(this.entities.indexOf(event.entity), 1);
 
     if (event.sentiment === 1) {
+      this.nCurrent++;
       this.sentimentResult.liked.push(event.entity.uri);
     } else if (event.sentiment === -1) {
+      this.nCurrent++;
       this.sentimentResult.disliked.push(event.entity.uri);
     } else {
       this.sentimentResult.unknown.push(event.entity.uri);
