@@ -10,4 +10,12 @@
         <button (click)="emit(entity, -1)" class="btn btn-danger mr-2">Dislike</button>
         <button (click)="emit(entity, 0)" class="btn btn-warning">Don't know</button>
     </div>
+    <div *ngIf="entity.movies?.length > 0" class="col-md-auto border-left">
+        <h4 >Related movies</h4>
+        <ul>
+          <li *ngFor="let movie of entity.movies">
+            {{movie}}
+          </li>
+        </ul>
+    </div>
 </div>
