@@ -3,5 +3,6 @@ export class Entity {
   name: string;
   uri: string;
   resource: string;
+  movies: string[];
   description: string;
 }

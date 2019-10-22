@@ -14,4 +14,12 @@
             </div>
         </div>
     </div>
+    <div *ngIf="entity.movies?.length > 0" class="col-md-auto border-left">
+        <h4 >Related movies</h4>
+        <ul>
+          <li *ngFor="let movie of entity.movies">
+            {{movie}}
+          </li>
+        </ul>
+    </div>
 </div>
