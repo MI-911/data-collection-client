@@ -7,7 +7,17 @@
         </div>
 
         <div class="card-body" [ngBusy]="loading">
-          <app-entity-list [entities]="samples" (result)="initialResult($event)"></app-entity-list>
+          <ng-container
+            *ngIf="posPredictions; then hasPredictions; else hasEntities">
+          </ng-container>
+
+          <ng-template #hasPredictions>
+            <app-predictions [posPredictions]="posPredictions" [negPredictions]="negPredictions"></app-predictions>
+          </ng-template>
+
+          <ng-template #hasEntities>
+            <app-entity-list [entities]="samples" (result)="initialResult($event)"></app-entity-list>
+          </ng-template>
         </div>
       </div>
     </div>
