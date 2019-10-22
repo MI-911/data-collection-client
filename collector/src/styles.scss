@@ -1,16 +1,21 @@
-/*! `Custom` Bootstrap 4 theme */
-
-$primary:#2f3c48;
-$secondary:#6f7f8c;
+$primary:#07689F;
+$secondary:#868e96;
 $success:#28a745;
-$danger:#cc330d;
-$info:#5c8f94;
-$warning:#6e9fa5;
-$light:#eceeec;
-$dark:#1e2b37;
-$spacer:1rem;
+$danger:#dc3545;
+$info:#A2D5F2;
+$warning:#FF7E67;
+$light:#FAFAFA;
+$dark:#4e4e4e;
+$enable-gradients:true;
+$spacer:1.2rem;
 $border-width:1px;
-$btn-border-radius:.25rem;
+$btn-border-radius:1.35rem;
 
 $enable-gradients:true;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+body {
+    font-family: 'Open Sans', sans-serif !important;
+}
