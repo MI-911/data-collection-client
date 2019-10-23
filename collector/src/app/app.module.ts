@@ -9,6 +9,8 @@ import { MovieListComponent } from './components/entity-list/entity-list.compone
 import { StaticFilePipe } from './pipes/static-file.pipe';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { PredictionsComponent } from './components/predictions/predictions.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { PredictionsComponent } from './components/predictions/predictions.compo
     EntityComponent,
     MovieListComponent,
     StaticFilePipe,
-    PredictionsComponent
+    PredictionsComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
