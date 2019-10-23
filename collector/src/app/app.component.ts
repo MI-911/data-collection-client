@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   samples: Entity[];
   negPredictions: Entity[];
   posPredictions: Entity[];
+  showPreScreen: boolean;
 
   constructor(
     private entitiesService: EntitiesService,
