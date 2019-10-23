@@ -14,8 +14,8 @@ export class PredictionsComponent implements OnInit {
   @Output() result = new EventEmitter<SentimentResult>();
 
   private sentimentResult = new SentimentResult;
-  private numWrongPos = 0;
-  private numWrongNeg = 0;
+  public numWrongPos = 0;
+  public numWrongNeg = 0;
 
   constructor() { }
 
