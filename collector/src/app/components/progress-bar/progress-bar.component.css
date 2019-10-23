@@ -7,9 +7,6 @@
 }
 
 .progress {
-    position: sticky;
     top: 45px;
-    z-index: 1;
     height: 40px;
-    
 }
