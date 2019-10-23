@@ -9,6 +9,9 @@ import { MovieListComponent } from './components/entity-list/entity-list.compone
 import { StaticFilePipe } from './pipes/static-file.pipe';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { PredictionsComponent } from './components/predictions/predictions.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PrescreenComponent } from './components/prescreen/prescreen.component';
 
 @NgModule({
   declarations: [
@@ -16,19 +19,25 @@ import { PredictionsComponent } from './components/predictions/predictions.compo
     EntityComponent,
     MovieListComponent,
     StaticFilePipe,
-    PredictionsComponent
+    PredictionsComponent,
+    ProgressBarComponent,
+    PrescreenComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgBusyModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
   }],
+  entryComponents: [
+    PrescreenComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

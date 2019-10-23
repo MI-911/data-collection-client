@@ -3,18 +3,18 @@
         <img [src]="entity.id | staticFile: [entity.resource]" [title]="entity.name" class="img-fluid"
              (error)="setSource($event, entity)"/>
     </div>
-    <div class="col-md-auto align-self-center">
+    <div class="col-md-6 align-self-center">
         <h4 class="lead">{{ entity.name }}</h4>
         <h3 class="lead text-muted mb-auto">{{ entity.description }}</h3>
         <div *ngIf="withOptions">
             <div class="btn-group mt-3">
                 <button (click)="emit(entity, 1)" class="btn btn-success"><i class="far fa-thumbs-up"></i> Like</button>
                 <button (click)="emit(entity, -1)" class="btn btn-danger"><i class="far fa-thumbs-down"></i> Dislike</button>
-                <button (click)="emit(entity, 0)" class="btn btn-warning">Don't know</button>
+                <button (click)="emit(entity, 0)" class="btn btn-secondary">Don't know</button>
             </div>
         </div>
     </div>
-    <div *ngIf="entity.movies?.length > 0" class="col-md-auto border-left">
+    <div *ngIf="entity.movies?.length > 0" class="col-md-4 border-left">
         <h4 >Related movies</h4>
         <ul>
           <li *ngFor="let movie of entity.movies">

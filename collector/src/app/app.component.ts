@@ -3,6 +3,8 @@ import { EntitiesService } from './services/entities.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SentimentResult } from './models/sentiment-result';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PrescreenComponent } from './components/prescreen/prescreen.component';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +16,16 @@ export class AppComponent implements OnInit {
   samples: Entity[];
   negPredictions: Entity[];
   posPredictions: Entity[];
+  showPreScreen: boolean;
 
-  constructor(private entitiesService: EntitiesService) {
+  constructor(
+    private entitiesService: EntitiesService,
+    private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
     this.loading = this.entitiesService.begin().subscribe(samples => this.samples = samples);
+    this.modalService.open(PrescreenComponent, {size: 'lg'});
   }
 
   initialResult(result: SentimentResult) {
@@ -36,6 +42,6 @@ export class AppComponent implements OnInit {
         this.samples = data;
       }
     });
-    result.reset_results();
+    result.resetResults();
   }
 }

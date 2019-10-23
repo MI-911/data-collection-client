@@ -3,7 +3,7 @@ export class SentimentResult {
     disliked: string[] = [];
     unknown: string[] = [];
 
-    reset_results() {
+    resetResults() {
       this.liked = [];
       this.disliked = [];
       this.unknown = [];

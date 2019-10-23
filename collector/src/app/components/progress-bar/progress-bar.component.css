@@ -1,0 +1,15 @@
+.progress-bar {
+    color: black;
+    font-weight: bold;
+    background-color: rgb(45, 169, 73);
+    z-index: inherit;
+    height: inherit;
+}
+
+.progress {
+    position: sticky;
+    top: 45px;
+    z-index: 1;
+    height: 40px;
+    
+}
