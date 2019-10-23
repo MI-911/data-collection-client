@@ -1,6 +1,6 @@
  <div *ngIf="entities">
    <h5>Please state your preferences on these entities.</h5>
-   <app-progress-bar [nCurrent]="nCurrent" [nMax]="nMax" ></app-progress-bar>
+   <app-progress-bar [nCurrent]="progress" [nMax]="nMax" ></app-progress-bar>
 
    <div *ngFor="let entity of entities; let i = index" [@simpleFadeAnimation]="'in'">
       <hr />
