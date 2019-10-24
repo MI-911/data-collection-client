@@ -35,6 +35,8 @@ export class MovieListComponent implements OnInit {
   private sentimentResult = new SentimentResult;
   private nMaxLiked = 5;
   private nMaxDisliked = 5;
+  private nLiked = 0; 
+  private nDisliked = 0;
   public nMax: number = this.nMaxLiked + this.nMaxDisliked;
 
   constructor() { }
@@ -46,8 +48,10 @@ export class MovieListComponent implements OnInit {
     this.entities.splice(this.entities.indexOf(event.entity), 1);
 
     if (event.sentiment === 1) {
+      this.nLiked++;
       this.sentimentResult.liked.push(event.entity.uri);
     } else if (event.sentiment === -1) {
+      this.nDisliked++;
       this.sentimentResult.disliked.push(event.entity.uri);
     } else {
       this.sentimentResult.unknown.push(event.entity.uri);
@@ -60,9 +64,21 @@ export class MovieListComponent implements OnInit {
 
   // Stops counting up liked/disliked if we have more than we need
   public get progress(): number {
-    let nLiked = this.sentimentResult.liked.length;
-    let nDisliked = this.sentimentResult.disliked.length;
-    return (nLiked > this.nMaxLiked ? this.nMaxLiked : nLiked) +
-           (nDisliked > this.nMaxDisliked ? this.nMaxDisliked : nDisliked);
+    return (this.nLiked > this.nMaxLiked ? this.nMaxLiked : this.nLiked) +
+           (this.nDisliked > this.nMaxDisliked ? this.nMaxDisliked : this.nDisliked);
+  }
+
+  public get progressMsg(): string {
+    if (this.nLiked < this.nMaxLiked) {
+      if (this.nDisliked < this.nMaxDisliked) {
+        return `${this.nMaxLiked - this.nLiked} likes and ${this.nMaxDisliked - this.nDisliked} dislikes remaining...`; 
+      } else {
+        return `${this.nMaxLiked - this.nLiked} likes remanining...`;
+      }
+    } else if (this.nDisliked < this.nMaxDisliked) {
+      return `${this.nMaxDisliked - this.nDisliked} dislikes remaining...`; 
+    } else {
+      return "All done!";
+    }
   }
 }

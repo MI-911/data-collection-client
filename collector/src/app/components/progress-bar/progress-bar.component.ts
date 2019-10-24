@@ -9,6 +9,7 @@ export class ProgressBarComponent implements OnInit {
 
   @Input() nMax: number; 
   @Input() nCurrent: number;
+  @Input() progressMsg: string;
 
   constructor() { }
 
