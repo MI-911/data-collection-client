@@ -9,11 +9,11 @@ import { Entity } from '../models/entity';
 export class EntitiesService {
   constructor(private http: HttpClient) { }
 
-  begin() {
-    return this.http.get<Entity[]>(`${environment.apiUrl}/begin`);
+  movies() {
+    return this.http.get<Entity[]>(`${environment.apiUrl}/movies`);
   }
 
-  entities(result: SentimentResult) {
-    return this.http.post<any>(`${environment.apiUrl}/entities`, result);
+  feedback(result: SentimentResult) {
+    return this.http.post<any>(`${environment.apiUrl}/feedback`, result);
   }
 }

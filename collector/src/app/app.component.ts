@@ -24,17 +24,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loading = this.entitiesService.begin().subscribe(samples => this.samples = samples);
+    this.loading = this.entitiesService.movies().subscribe(samples => this.samples = samples);
     this.modalService.open(PrescreenComponent, {size: 'lg'});
   }
 
   initialResult(result: SentimentResult) {
     if (this.posPredictions || this.negPredictions) {
-      this.entitiesService.entities(result);
+      this.entitiesService.feedback(result);
       return;
     }
 
-    this.loading = this.entitiesService.entities(result).subscribe(data => {
+    this.loading = this.entitiesService.feedback(result).subscribe(data => {
       if (data['prediction']) {
         this.posPredictions = data['likes'] as Entity[];
         this.negPredictions = data['dislikes'] as Entity[];

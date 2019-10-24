@@ -1,3 +1,4 @@
+import { SessionService } from './../../services/session.service';
 import { EntitySentiment } from '../../models/entity-sentiment';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, transition, style, animate } from '@angular/animations';
