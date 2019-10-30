@@ -2,11 +2,33 @@
     <h4 class="modal-title text-center" id="modal-basic-title">Let's read your movie-mind!</h4>
   </div>
   <div class="modal-body text-center">
-      <h4>The movies you like depend on more than movies</h4>
-      <h6>We let you explore a <span style="font-weight: bold">network of movie-knowledge</span> that consists of <span style="font-weight: bold">entities</span>.</h6>
-      <h6>With this information, we recommend you movies based on your <span style="font-weight: bold">knowledge profile</span> rather than just what you have watched and liked!</h6>
+      <h4>In this game, we try to guess what movies you like</h4>
+      <h6>We will be asking for your opinion on</h6>
 
-      <img class="img-responsive" src="assets/images/kg_collector_ver2.png">
+        <h6><span style="font-weight: bold">Movies</span></h6>
+        <h6><span style="font-weight: bold">Actors</span></h6>
+        <h6><span style="font-weight: bold">Genres</span></h6>
+        <h6><span style="font-weight: bold">Directors</span></h6>
+        <h6><span style="font-weight: bold">Subjects</span></h6>
+
+      <h6>... and use the information to guess the movies you <span style="font-weight: bold">like</span> and <span style="font-weight: bold">don't like</span>!</h6>
+      <br>
+      <h6>For every question, you can answer one of the following: </h6>
+      <br>
+      <div style="background-color: #b4ffb9; padding: 5px; border-radius: 5px; margin: 5px">
+        <h6 style="color: green; font-weight: bold">Like</h6>
+        <h6 style="color: green">If you like it</h6>
+      </div>
+      <div style="background-color: #c8c8c8; padding: 5px; border-radius: 5px; margin: 5px">
+          <h6 style="color: black; font-weight: bold">Don't know</h6>
+          <h6 style="color: black">If you neither like nor dislike, or if you simply don't know</h6>
+      </div>
+      <div style="background-color: #ffc4c5; padding: 5px; border-radius: 5px; margin: 5px">
+          <h6 style="color: red; font-weight: bold">Dislike</h6>
+          <h6 style="color: red">If you don't like it</h6>
+      </div>
+      
+
   </div>
   <div class="modal-footer" style="display: flex; justify-content: center;">
     <button type="button" style="color: white" (click)="onClose()" class="btn btn-success btn-lg"><i class="fas fa-video"></i> Get started</button>
