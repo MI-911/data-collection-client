@@ -33,11 +33,9 @@ export class MovieListComponent implements OnInit {
   @Output() result = new EventEmitter<SentimentResult>();
 
   private sentimentResult = new SentimentResult;
-  private nMaxLiked = 5;
-  private nMaxDisliked = 5;
-  private nLiked = 0; 
+  private nMax = 10;
+  private nLiked = 0;
   private nDisliked = 0;
-  public nMax: number = this.nMaxLiked + this.nMaxDisliked;
 
   constructor() { }
 
@@ -64,19 +62,18 @@ export class MovieListComponent implements OnInit {
 
   // Stops counting up liked/disliked if we have more than we need
   public get progress(): number {
-    return (this.nLiked > this.nMaxLiked ? this.nMaxLiked : this.nLiked) +
-           (this.nDisliked > this.nMaxDisliked ? this.nMaxDisliked : this.nDisliked);
+    return this.nLiked + this.nDisliked;
   }
 
   public get progressMsg(): string {
     if (this.nLiked < this.nMaxLiked) {
       if (this.nDisliked < this.nMaxDisliked) {
-        return `${this.nMaxLiked - this.nLiked} likes and ${this.nMaxDisliked - this.nDisliked} dislikes remaining...`; 
+        return `${this.nMaxLiked - this.nLiked} likes and ${this.nMaxDisliked - this.nDisliked} dislikes remaining...`;
       } else {
         return `${this.nMaxLiked - this.nLiked} likes remanining...`;
       }
     } else if (this.nDisliked < this.nMaxDisliked) {
-      return `${this.nMaxDisliked - this.nDisliked} dislikes remaining...`; 
+      return `${this.nMaxDisliked - this.nDisliked} dislikes remaining...`;
     } else {
       return "All done!";
     }
