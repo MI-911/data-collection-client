@@ -13,7 +13,7 @@
         </div>
     </div>
     <div *ngIf="entity.movies?.length > 0" class="col-md-4 border-left">
-        <h4 >Related movies</h4>
+        <b>Movies related to {{ entity.name }}</b>
         <ul>
           <li *ngFor="let movie of entity.movies">
             {{movie}}
