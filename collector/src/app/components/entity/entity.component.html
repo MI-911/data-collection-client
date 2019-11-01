@@ -1,6 +1,6 @@
 <div class="row m-2">
     <div class="col-md-2">
-        <img [src]="entity.id | staticFile: [entity.resource]" [title]="entity.name" class="img-fluid"
+        <img [src]="entity.image" [title]="entity.name" class="img-fluid"
              (error)="setSource($event, entity)"/>
     </div>
     <div class="col-md-6 align-self-center">

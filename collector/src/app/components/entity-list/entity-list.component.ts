@@ -33,7 +33,7 @@ export class MovieListComponent implements OnInit {
   @Output() result = new EventEmitter<SentimentResult>();
 
   private sentimentResult = new SentimentResult;
-  private nMax = 15;
+  public nMax = 15;
   private nLiked = 0;
   private nDisliked = 0;
 
