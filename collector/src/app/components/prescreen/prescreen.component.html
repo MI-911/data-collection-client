@@ -1,35 +1,41 @@
 <div class="modal-header">
-    <h4 class="modal-title text-center" id="modal-basic-title">Let's read your movie-mind!</h4>
-  </div>
-  <div class="modal-body text-center">
-      <h4>In this game, we try to guess what movies you like</h4>
-      <h6>We will be asking for your opinion on</h6>
+  <h4 class="modal-title text-center" id="modal-basic-title">Let's read your movie-mind!</h4>
+</div>
+<div class="modal-body text-center">
+    <h4>In this game, we try to guess what movies you like</h4>
+    <h6>We will be asking for your opinion on</h6>
 
-        <h6><span style="font-weight: bold">Movies</span></h6>
-        <h6><span style="font-weight: bold">Actors</span></h6>
-        <h6><span style="font-weight: bold">Genres</span></h6>
-        <h6><span style="font-weight: bold">Directors</span></h6>
-        <h6><span style="font-weight: bold">Subjects</span></h6>
+      <h6><span style="font-weight: bold">Movies</span></h6>
+      <h6><span style="font-weight: bold">Actors</span></h6>
+      <h6><span style="font-weight: bold">Genres</span></h6>
+      <h6><span style="font-weight: bold">Directors</span></h6>
+      <h6><span style="font-weight: bold">Subjects</span></h6>
 
-      <h6>... and use the information to guess the movies you <span style="font-weight: bold">like</span> and <span style="font-weight: bold">don't like</span>!</h6>
-      <br>
-      <h6>For every question, you can answer one of the following: </h6>
-      <br>
-      <div style="background-color: #b4ffb9; padding: 5px; border-radius: 5px; margin: 5px">
-        <h6 style="color: green; font-weight: bold">Like</h6>
-        <h6 style="color: green">If you like it</h6>
-      </div>
-      <div style="background-color: #c8c8c8; padding: 5px; border-radius: 5px; margin: 5px">
-          <h6 style="color: black; font-weight: bold">Don't know</h6>
-          <h6 style="color: black">If you neither like nor dislike, or if you simply don't know</h6>
-      </div>
-      <div style="background-color: #ffc4c5; padding: 5px; border-radius: 5px; margin: 5px">
-          <h6 style="color: red; font-weight: bold">Dislike</h6>
-          <h6 style="color: red">If you don't like it</h6>
-      </div>
+      
+      
       
 
-  </div>
-  <div class="modal-footer" style="display: flex; justify-content: center;">
-    <button type="button" style="color: white" (click)="onClose()" class="btn btn-success btn-lg"><i class="fas fa-video"></i> Get started</button>
+    <h6>... and use the information to guess the movies you <span style="font-weight: bold">like</span> and <span style="font-weight: bold">don't like</span>!</h6>
+    <br>
+    <h6>For every question, you can answer one of the following: </h6>
+    <br>
+    <div style="background-color: #b4ffb9; padding: 5px; border-radius: 5px; margin: 5px">
+      <button class="btn btn-success mr-1"  style="margin: 15px"><i class="far fa-thumbs-up"></i> Like</button>
+      <h6 style="color: black">...if you like it</h6>
+    </div>
+    <div style="background-color: #c8c8c8; padding: 5px; border-radius: 5px; margin: 5px">
+      <button class="btn btn-secondary" style="margin: 15px">Don't know</button>
+      <h6 style="color: black">... if you neither like nor dislike, or if you simply don't know</h6>
+    </div>
+    <div style="background-color: #ffc4c5; padding: 5px; border-radius: 5px; margin: 5px">
+      <button class="btn btn-danger mr-1" style="margin: 15px"><i class="far fa-thumbs-down"></i> Dislike</button>
+      <h6 style="color: black">... if you don't like it</h6>
+    </div>
+    <p style="font-style: italic">The questions and your responses to them will be collected <span style="font-weight: bold">completely anonymously</span> and used for research at the Department of Computer Science, Aalborg University.</p>
+
+    
+
+</div>
+<div class="modal-footer" style="display: flex; justify-content: center;">
+  <button type="button" style="color: white" (click)="onClose()" class="btn btn-success btn-lg"><i class="fas fa-video"></i> Get started</button>
 </div>

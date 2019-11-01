@@ -33,7 +33,7 @@ export class MovieListComponent implements OnInit {
   @Output() result = new EventEmitter<SentimentResult>();
 
   private sentimentResult = new SentimentResult;
-  private nMax = 10;
+  private nMax = 15;
   private nLiked = 0;
   private nDisliked = 0;
 
@@ -66,16 +66,7 @@ export class MovieListComponent implements OnInit {
   }
 
   public get progressMsg(): string {
-    if (this.nLiked < this.nMaxLiked) {
-      if (this.nDisliked < this.nMaxDisliked) {
-        return `${this.nMaxLiked - this.nLiked} likes and ${this.nMaxDisliked - this.nDisliked} dislikes remaining...`;
-      } else {
-        return `${this.nMaxLiked - this.nLiked} likes remanining...`;
-      }
-    } else if (this.nDisliked < this.nMaxDisliked) {
-      return `${this.nMaxDisliked - this.nDisliked} dislikes remaining...`;
-    } else {
-      return "All done!";
-    }
+    let remaining = this.nMax - (this.nLiked + this.nDisliked);
+    return `${remaining < 0 ? 0 : remaining} remaining...`;
   }
 }
