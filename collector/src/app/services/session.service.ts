@@ -15,7 +15,9 @@ export class SessionService {
     if (!localStorage.getItem('userToken')) {
       localStorage.setItem('userToken', uuid.v1());
       this._firstSession = true;
-    } else {
+    }
+
+    if (!this.sessionToken) {
       this.sessionToken = uuid.v1();
     }
   }
