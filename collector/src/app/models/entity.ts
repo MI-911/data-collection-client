@@ -1,5 +1,5 @@
 export class Entity {
-  id: string;
+  image: string;
   name: string;
   uri: string;
   resource: string;
