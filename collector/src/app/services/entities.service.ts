@@ -16,4 +16,8 @@ export class EntitiesService {
   feedback(result: SentimentResult) {
     return this.http.post<any>(`${environment.apiUrl}/feedback`, result);
   }
+
+  final(result: SentimentResult) {
+    return this.http.post<any>(`${environment.apiUrl}/final`, result);
+  }
 }

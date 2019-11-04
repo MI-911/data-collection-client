@@ -35,8 +35,18 @@ export class AppComponent implements OnInit {
 
   initialResult(result: SentimentResult) {
     if (this.posPredictions || this.negPredictions) {
-      this.entitiesService.feedback(result);
-      return;
+      console.log('My name is ANdERS brAms');
+      this.entitiesService.final(result).subscribe();
+    } else {
+      this.loading = this.entitiesService.feedback(result).subscribe(data => {
+        if (data['prediction']) {
+          this.posPredictions = data['likes'] as Entity[];
+          this.negPredictions = data['dislikes'] as Entity[];
+        } else {
+          this.samples = data;
+        }
+      });
+      result.resetResults();
     }
 
     this.loading = this.entitiesService.feedback(result).subscribe(data => {
