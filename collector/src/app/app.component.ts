@@ -1,3 +1,4 @@
+import { SessionService } from './services/session.service';
 import { Entity } from './models/entity';
 import { EntitiesService } from './services/entities.service';
 import { Component, OnInit } from '@angular/core';
@@ -20,12 +21,16 @@ export class AppComponent implements OnInit {
 
   constructor(
     private entitiesService: EntitiesService,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
     this.loading = this.entitiesService.movies().subscribe(samples => this.samples = samples);
-    this.modalService.open(PrescreenComponent, {size: 'lg'});
+
+    if (this.sessionService.firstSession) {
+      this.modalService.open(PrescreenComponent, {size: 'lg'});
+    }
   }
 
   initialResult(result: SentimentResult) {
@@ -35,9 +40,9 @@ export class AppComponent implements OnInit {
     }
 
     this.loading = this.entitiesService.feedback(result).subscribe(data => {
-      if (data['prediction']) {
-        this.posPredictions = data['likes'] as Entity[];
-        this.negPredictions = data['dislikes'] as Entity[];
+      if (data.prediction) {
+        this.posPredictions = data.likes as Entity[];
+        this.negPredictions = data.dislikes as Entity[];
       } else {
         this.samples = data;
       }

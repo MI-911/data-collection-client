@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as uuid from 'uuid';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +7,12 @@ import { environment } from 'src/environments/environment';
 export class SessionService {
   sessionToken = '';
   hasClickedEntity = false;
-  _firstSession = false;
+  isFirstSession = false;
 
   constructor() {
     if (!localStorage.getItem('userToken')) {
       localStorage.setItem('userToken', uuid.v1());
-      this._firstSession = true;
+      this.isFirstSession = true;
     }
 
     if (!this.sessionToken) {
@@ -23,7 +21,7 @@ export class SessionService {
   }
 
   get firstSession() {
-    return this._firstSession;
+    return this.isFirstSession;
   }
 
   get token() {
