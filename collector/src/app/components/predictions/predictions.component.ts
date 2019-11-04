@@ -13,34 +13,30 @@ export class PredictionsComponent implements OnInit {
   @Input() posPredictions: Entity[];
   @Output() result = new EventEmitter<SentimentResult>();
 
-  private sentimentResult = new SentimentResult;
   public numWrongPos = 0;
   public numWrongNeg = 0;
 
   constructor() { }
 
   ngOnInit() {
-    
   }
 
   sentiment(event: EntitySentiment) {
-    let isPositive = this.posPredictions.some(o => event.entity == o);
-    let entities = isPositive ? this.posPredictions : this.negPredictions;
+    const isPositive = this.posPredictions.some(o => event.entity === o);
+    const entities = isPositive ? this.posPredictions : this.negPredictions;
+    const localSentimentResult = new SentimentResult();
 
     entities.splice(entities.indexOf(event.entity), 1);
-
     if (event.sentiment === 1) {
-      this.sentimentResult.liked.push(event.entity.uri);
-      if (!isPositive) this.numWrongNeg++;
+      if (!isPositive) { this.numWrongNeg++; }
+      localSentimentResult.liked.push(event.entity.uri);
     } else if (event.sentiment === -1) {
-      if (isPositive) this.numWrongPos++;
-      this.sentimentResult.disliked.push(event.entity.uri);
+      if (isPositive) { this.numWrongPos++; }
+      localSentimentResult.disliked.push(event.entity.uri);
     } else {
-      this.sentimentResult.unknown.push(event.entity.uri);
+      localSentimentResult.unknown.push(event.entity.uri);
     }
 
-    if (!entities.length) {
-      this.result.emit(this.sentimentResult);
-    }
+    this.result.emit(localSentimentResult);
   }
 }
