@@ -25,38 +25,44 @@ export class AppComponent implements OnInit {
     private sessionService: SessionService) {
   }
 
+  reset() {
+    this.sessionService.startSession();
+    this.loadMovies();
+  }
+
   ngOnInit(): void {
-    this.loading = this.entitiesService.movies().subscribe(samples => this.samples = samples);
+    this.loadMovies();
 
     if (this.sessionService.firstSession) {
       this.modalService.open(PrescreenComponent, {size: 'lg'});
     }
   }
 
+  loadMovies() {
+    this.loading = this.entitiesService.movies().subscribe(samples => {
+      this.samples = samples;
+
+      this.posPredictions = null;
+      this.negPredictions = null;
+    });
+  }
+
   initialResult(result: SentimentResult) {
     if (this.posPredictions || this.negPredictions) {
-      console.log('My name is ANdERS brAms');
       this.entitiesService.final(result).subscribe();
     } else {
       this.loading = this.entitiesService.feedback(result).subscribe(data => {
-        if (data['prediction']) {
-          this.posPredictions = data['likes'] as Entity[];
-          this.negPredictions = data['dislikes'] as Entity[];
+        console.log(data);
+
+        if (data.prediction) {
+          this.posPredictions = data.likes as Entity[];
+          this.negPredictions = data.dislikes as Entity[];
         } else {
           this.samples = data;
         }
       });
+
       result.resetResults();
     }
-
-    this.loading = this.entitiesService.feedback(result).subscribe(data => {
-      if (data.prediction) {
-        this.posPredictions = data.likes as Entity[];
-        this.negPredictions = data.dislikes as Entity[];
-      } else {
-        this.samples = data;
-      }
-    });
-    result.resetResults();
   }
 }

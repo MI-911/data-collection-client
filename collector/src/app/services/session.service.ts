@@ -16,10 +16,13 @@ export class SessionService {
     }
 
     if (!this.sessionToken) {
-      this.sessionToken = uuid.v1();
+      this.startSession();
     }
   }
 
+  startSession() {
+    this.sessionToken = uuid.v1();
+  }
   get firstSession() {
     return this.isFirstSession;
   }

@@ -19,7 +19,7 @@ export class EntityComponent implements OnInit {
 
   setSource(event, entity) {
     console.log(entity.movies)
-    event.target.src = `https://dummyimage.com/182x268/c4c4c4/00000.png?text=${entity.name}`;
+    event.target.src = `https://dummyimage.com/182x268/9ea1ff/00000.png?text=${entity.name}`;
   }
   emit(entity, sentiment) {
     this.sentiment.emit(new EntitySentiment(entity, sentiment));

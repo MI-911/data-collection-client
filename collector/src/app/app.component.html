@@ -12,7 +12,7 @@
           </ng-container>
 
           <ng-template #hasPredictions>
-            <app-predictions [posPredictions]="posPredictions" [negPredictions]="negPredictions" (result)="initialResult($event)"></app-predictions>
+            <app-predictions (reset)="reset()" [posPredictions]="posPredictions" [negPredictions]="negPredictions" (result)="initialResult($event)"></app-predictions>
           </ng-template>
 
           <ng-template #hasEntities>

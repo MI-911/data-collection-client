@@ -12,6 +12,7 @@ export class PredictionsComponent implements OnInit {
   @Input() negPredictions: Entity[];
   @Input() posPredictions: Entity[];
   @Output() result = new EventEmitter<SentimentResult>();
+  @Output() reset = new EventEmitter();
 
   public numWrongPos = 0;
   public numWrongNeg = 0;

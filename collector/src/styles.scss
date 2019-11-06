@@ -14,8 +14,6 @@ $btn-border-radius:2rem;
 $enable-gradients:true;
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
-
 body {
-    font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Raleway', sans-serif;
 }

@@ -1,30 +1,65 @@
-<div class="card-group">
+<ng-container
+  *ngIf="!posPredictions.length && !negPredictions.length; else predictions"
+>
+  <p *ngIf="numWrongNeg > 0 || numWrongPos > 0; else thanks">
+    Thank you for playing! It looks like we could have read your mind better.
+    Would you like to play again?
+  </p>
+
+  <ng-template #thanks>
+    Thank you for playing! If you want to, you can play another round now or
+    play again later.
+  </ng-template>
+
+  <div style="display: flex; justify-content: center;" class="mt-2">
+    <button type="button" (click)="reset.emit()" class="btn btn-success">
+      Play again
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #thanksFeedback>
+  <div align="center">Thanks for your feedback!</div>
+</ng-template>
+
+<ng-template #predictions>
+  <div class="card-group">
     <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">You will probably like these</h5>
-            <div *ngIf="numWrongPos > 0">
-                <h6 class="card-title">Whoops! We'll do better next time...</h6>
-            </div>
-            <div *ngIf="posPredictions.length">
-                <div *ngFor="let entity of posPredictions; let i = index">
-                    <hr />
-                    <app-entity [entity]="entity" [withOptions]="true" (sentiment)="sentiment($event)"></app-entity>
-                </div>
-            </div>
+      <div class="card-header bg-success text-light">
+        <h5 class="card-title">We guess you like these movies</h5>
+        What do you think?
+      </div>
+      <div class="card-body">
+        <div *ngIf="posPredictions.length; else thanksFeedback">
+          <div *ngFor="let entity of posPredictions; let i = index">
+            <hr *ngIf="i" />
+            <app-entity
+              [entity]="entity"
+              [withOptions]="true"
+              (sentiment)="sentiment($event)"
+            ></app-entity>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">... and dislike these!</h5>
-            <div *ngIf="numWrongNeg > 0">
-                <h6 class="card-title">Whoops! We'll do better next time...</h6>
-            </div>
-            <div *ngIf="negPredictions.length">
-                <div *ngFor="let entity of negPredictions; let i = index">
-                    <hr />
-                    <app-entity [entity]="entity" [withOptions]="true" (sentiment)="sentiment($event)"></app-entity>
-                </div>
-            </div>
+
+    <div class="card" *ngIf="negPredictions.length">
+      <div class="card-header bg-danger text-light">
+        <h5 class="card-title">We guess you don't like these movies</h5>
+        What do you think?
+      </div>
+      <div class="card-body">
+        <div *ngIf="negPredictions.length; else thanksFeedback">
+          <div *ngFor="let entity of negPredictions; let i = index">
+            <hr *ngIf="i" />
+            <app-entity
+              [entity]="entity"
+              [withOptions]="true"
+              (sentiment)="sentiment($event)"
+            ></app-entity>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+</ng-template>
