@@ -12,12 +12,13 @@ import { PrescreenComponent } from './components/prescreen/prescreen.component';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  title = 'Data Collector';
+  title = 'MindReader';
   loading: Subscription;
   samples: Entity[];
   negPredictions: Entity[];
   posPredictions: Entity[];
   showPreScreen: boolean;
+  showError: boolean;
 
   constructor(
     private entitiesService: EntitiesService,
@@ -44,7 +45,7 @@ export class AppComponent implements OnInit {
 
       this.posPredictions = null;
       this.negPredictions = null;
-    });
+    }, error => this.showError = true);
   }
 
   initialResult(result: SentimentResult) {
