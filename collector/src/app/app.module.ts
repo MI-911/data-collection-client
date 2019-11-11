@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgBusyModule} from 'ng-busy';
+import {NgBusyModule, BusyConfig} from 'ng-busy';
 import { EntityComponent } from './components/entity/entity.component';
 import { MovieListComponent } from './components/entity-list/entity-list.component';
 import { StaticFilePipe } from './pipes/static-file.pipe';
@@ -26,7 +26,12 @@ import { PrescreenComponent } from './components/prescreen/prescreen.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgBusyModule,
+    NgBusyModule.forRoot({
+      minDuration: 100,
+      delay: 50,
+      backdrop: true,
+      disableAnimation: true
+    } as BusyConfig),
     BrowserAnimationsModule,
     NgbModule
   ],

@@ -22,8 +22,17 @@ import { SentimentResult } from 'src/app/models/sentiment-result';
       ]),
 
       // fade out when destroyed. this could also be written as transition('void => *')
-      transition(':leave',
-        animate(250, style({opacity: 0})))
+      /*transition(':leave',
+        animate(250, style({opacity: 0})))*/
+
+      transition(':leave', [
+        style({ transform: 'scale(1)', opacity: 1, height: '*' }),
+        animate('0.4s ease-out',
+          style({
+            transform: 'scale(0.05)', opacity: 0,
+            height: '0px', margin: '0px'
+          }))
+      ])
     ])
   ]
 })
