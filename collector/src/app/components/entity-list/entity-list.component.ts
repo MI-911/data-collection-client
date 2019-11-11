@@ -66,7 +66,7 @@ export class MovieListComponent implements OnInit {
   }
 
   public get progressMsg(): string {
-    let remaining = this.nMax - (this.nLiked + this.nDisliked);
-    return `${remaining < 0 ? 0 : remaining} remaining...`;
+    const remaining = this.nMax - (this.nLiked + this.nDisliked);
+    return `${remaining < 0 ? 0 : remaining} remaining`;
   }
 }

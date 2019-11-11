@@ -5,4 +5,5 @@ export class Entity {
   resource: string;
   movies: string[];
   description: string;
+  summary: string;
 }
