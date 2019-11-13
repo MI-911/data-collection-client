@@ -53,8 +53,6 @@ export class AppComponent implements OnInit {
       this.entitiesService.final(result).subscribe();
     } else {
       this.loading = this.entitiesService.feedback(result).subscribe(data => {
-        console.log(data);
-
         if (data.prediction) {
           this.posPredictions = data.likes as Entity[];
           this.negPredictions = data.dislikes as Entity[];
