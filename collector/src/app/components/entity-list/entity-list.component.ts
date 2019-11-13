@@ -11,26 +11,12 @@ import { SentimentResult } from 'src/app/models/sentiment-result';
   animations: [
     // the fade-in/fade-out animation.
     trigger('simpleFadeAnimation', [
-
-      // the "in" style determines the "resting" state of the element when it is visible.
-      state('in', style({opacity: 1})),
-
-      // fade in when created. this could also be written as transition('void => *')
-      transition(':enter', [
-        style({opacity: 0}),
-        animate(250 )
-      ]),
-
-      // fade out when destroyed. this could also be written as transition('void => *')
-      /*transition(':leave',
-        animate(250, style({opacity: 0})))*/
-
       transition(':leave', [
-        style({ transform: 'scale(1)', opacity: 1, height: '*' }),
-        animate('0.4s ease-out',
+        animate(300,
           style({
-            transform: 'scale(0.05)', opacity: 0,
-            height: '0px', margin: '0px'
+            transform: 'translate(0, -200)',
+            opacity: 0,
+            height: 0
           }))
       ])
     ])

@@ -1,8 +1,7 @@
 export class Entity {
-  image: string;
+  imdb: string;
   name: string;
   uri: string;
-  resource: string;
   movies: string[];
   description: string;
   summary: string;
