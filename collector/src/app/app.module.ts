@@ -11,6 +11,7 @@ import { PredictionsComponent } from './components/predictions/predictions.compo
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrescreenComponent } from './components/prescreen/prescreen.component';
+import { CustomBusyComponent } from './components/custom-busy/custom-busy.component';
 
 @NgModule({
   declarations: [
@@ -19,17 +20,19 @@ import { PrescreenComponent } from './components/prescreen/prescreen.component';
     MovieListComponent,
     PredictionsComponent,
     ProgressBarComponent,
-    PrescreenComponent
+    PrescreenComponent,
+    CustomBusyComponent
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
     NgBusyModule.forRoot({
+      template: CustomBusyComponent,
       minDuration: 100,
       delay: 50,
       backdrop: true,
       disableAnimation: true
     } as BusyConfig),
+    BrowserModule,
     BrowserAnimationsModule,
     NgbModule
   ],
@@ -39,7 +42,8 @@ import { PrescreenComponent } from './components/prescreen/prescreen.component';
     multi: true
   }],
   entryComponents: [
-    PrescreenComponent
+    PrescreenComponent,
+    CustomBusyComponent
   ],
   bootstrap: [AppComponent]
 })

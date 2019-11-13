@@ -10,14 +10,9 @@ import { SentimentResult } from 'src/app/models/sentiment-result';
   templateUrl: './entity-list.component.html',
   animations: [
     // the fade-in/fade-out animation.
-    trigger('simpleFadeAnimation', [
+    trigger('fade', [
       transition(':leave', [
-        animate(300,
-          style({
-            transform: 'translate(0, -200)',
-            opacity: 0,
-            height: 0
-          }))
+        animate('300ms ease-in', style({height: 0, opacity: 0}))
       ])
     ])
   ]
@@ -25,9 +20,9 @@ import { SentimentResult } from 'src/app/models/sentiment-result';
 
 export class MovieListComponent implements OnInit {
   @Input() entities: Entity[];
-  @Output() result = new EventEmitter<SentimentResult>();
+  @Output() finished = new EventEmitter<SentimentResult>();
 
-  private sentimentResult = new SentimentResult;
+  private sentimentResult = new SentimentResult();
   public nMax = 15;
   private nLiked = 0;
   private nDisliked = 0;
@@ -51,7 +46,7 @@ export class MovieListComponent implements OnInit {
     }
 
     if (!this.entities.length) {
-      this.result.emit(this.sentimentResult);
+      this.finished.emit(this.sentimentResult);
     }
   }
 

@@ -11,8 +11,8 @@ import { EntitySentiment } from 'src/app/models/entity-sentiment';
 export class PredictionsComponent implements OnInit {
   @Input() negPredictions: Entity[];
   @Input() posPredictions: Entity[];
-  @Output() result = new EventEmitter<SentimentResult>();
-  @Output() reset = new EventEmitter();
+  @Output() finished = new EventEmitter<SentimentResult>();
+  @Output() restart = new EventEmitter();
 
   public numWrongPos = 0;
   public numWrongNeg = 0;
@@ -38,6 +38,6 @@ export class PredictionsComponent implements OnInit {
       localSentimentResult.unknown.push(event.entity.uri);
     }
 
-    this.result.emit(localSentimentResult);
+    this.finished.emit(localSentimentResult);
   }
 }

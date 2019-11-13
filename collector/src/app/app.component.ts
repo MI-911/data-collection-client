@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     private sessionService: SessionService) {
   }
 
-  reset() {
+  restart() {
     this.sessionService.startSession();
     this.loadMovies();
   }

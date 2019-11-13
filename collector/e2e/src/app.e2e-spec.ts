@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('collector app is running!');
+    expect(page.getTitleText()).toEqual('shiny-ivy-app app is running!');
   });
 
   afterEach(async () => {
