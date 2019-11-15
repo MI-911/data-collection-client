@@ -7,14 +7,14 @@
         </div>
 
         <div class="card-body" [ngBusy]="loading">
-          <ngb-alert *ngIf="showError" (close)="showError = false" type="danger">We can't connect to our server right now, please try again later.</ngb-alert>
+          <ngb-alert *ngIf="showError" (close)="showError = false" type="danger">We can't connect to our server right now 😔 Please try again later.</ngb-alert>
 
           <ng-container
             *ngIf="posPredictions; then hasPredictions; else hasEntities">
           </ng-container>
 
           <ng-template #hasPredictions>
-            <app-predictions (restart)="reset()" [posPredictions]="posPredictions" [negPredictions]="negPredictions" (finished)="initialResult($event)"></app-predictions>
+            <app-predictions (restart)="restart()" [posPredictions]="posPredictions" [negPredictions]="negPredictions" (finished)="initialResult($event)"></app-predictions>
           </ng-template>
 
           <ng-template #hasEntities>
