@@ -13,6 +13,7 @@ export class PredictionsComponent implements OnInit {
   @Input() posPredictions: Entity[];
   @Output() finished = new EventEmitter<SentimentResult>();
   @Output() restart = new EventEmitter();
+  @Output() done = new EventEmitter();
 
   public numWrongPos = 0;
   public numWrongNeg = 0;
@@ -36,6 +37,10 @@ export class PredictionsComponent implements OnInit {
       localSentimentResult.disliked.push(event.entity.uri);
     } else {
       localSentimentResult.unknown.push(event.entity.uri);
+    }
+
+    if (this.posPredictions.length === 0 && this.negPredictions.length === 0) {
+      this.done.emit();
     }
 
     this.finished.emit(localSentimentResult);
