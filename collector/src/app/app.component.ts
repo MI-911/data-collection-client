@@ -12,12 +12,10 @@ import { PrescreenComponent } from './components/prescreen/prescreen.component';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  title = 'MindReader';
   loading: Subscription;
   samples: Entity[];
   negPredictions: Entity[];
   posPredictions: Entity[];
-  showPreScreen: boolean;
   showError: boolean;
   done: boolean;
 

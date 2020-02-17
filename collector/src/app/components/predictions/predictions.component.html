@@ -11,11 +11,7 @@
     play again later.
   </ng-template>
 
-  <div style="display: flex; justify-content: center;" class="mt-2">
-    <button type="button" (click)="restart.emit()" class="btn btn-success">
-      Play again
-    </button>
-  </div>
+  <app-replay-options></app-replay-options>
 </ng-container>
 
 <ng-template #thanksFeedback>

@@ -12,6 +12,7 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrescreenComponent } from './components/prescreen/prescreen.component';
 import { CustomBusyComponent } from './components/custom-busy/custom-busy.component';
+import { ReplayOptionsComponent } from './components/replay-options/replay-options.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CustomBusyComponent } from './components/custom-busy/custom-busy.compon
     PredictionsComponent,
     ProgressBarComponent,
     PrescreenComponent,
-    CustomBusyComponent
+    CustomBusyComponent,
+    ReplayOptionsComponent
   ],
   imports: [
     HttpClientModule,

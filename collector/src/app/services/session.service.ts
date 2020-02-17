@@ -10,8 +10,8 @@ export class SessionService {
   isFirstSession = false;
 
   constructor() {
-    if (!localStorage.getItem('user')) {
-      localStorage.setItem('user', uuid.v1());
+    if (!localStorage.getItem('token')) {
+      localStorage.setItem('token', uuid.v1());
       this.isFirstSession = true;
     }
 
@@ -28,6 +28,6 @@ export class SessionService {
   }
 
   get token() {
-    return `${localStorage.getItem('user')}+${this.sessionToken}`;
+    return `${localStorage.getItem('token')}+${this.sessionToken}`;
   }
 }
