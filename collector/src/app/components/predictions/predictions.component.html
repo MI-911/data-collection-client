@@ -3,15 +3,14 @@
 >
   <p *ngIf="numWrongNeg > 0 || numWrongPos > 0; else thanks">
     Thank you for playing! It looks like we could have read your mind better.
-    Would you like to play again?
+    Would you like to play again or get more recommendations?
   </p>
 
   <ng-template #thanks>
-    Thank you for playing! If you want to, you can play another round now or
-    play again later.
+    Thank you for playing! Would you like to play again or get more recommendations?
   </ng-template>
 
-  <app-replay-options></app-replay-options>
+  <app-replay-options (restart)="restart.emit()" (recommend)="recommend.emit()"></app-replay-options>
 </ng-container>
 
 <ng-template #thanksFeedback>

@@ -23,11 +23,20 @@ export class SessionService {
   startSession() {
     this.sessionToken = uuid.v1();
   }
+
+  complete() {
+    localStorage.setItem('completed', JSON.stringify(true));
+  }
+
   get firstSession() {
     return this.isFirstSession;
   }
 
   get token() {
     return `${localStorage.getItem('token')}+${this.sessionToken}`;
+  }
+
+  get completed() {
+    return JSON.parse(localStorage.getItem('completed'));
   }
 }
