@@ -13,6 +13,7 @@ export class PredictionsComponent implements OnInit {
   @Input() posPredictions: Entity[];
   @Output() finished = new EventEmitter<SentimentResult>();
   @Output() restart = new EventEmitter();
+  @Output() recommend = new EventEmitter();
   @Output() done = new EventEmitter();
 
   public numWrongPos = 0;

@@ -12,14 +12,13 @@ import { PrescreenComponent } from './components/prescreen/prescreen.component';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  title = 'MindReader';
   loading: Subscription;
   samples: Entity[];
   negPredictions: Entity[];
   posPredictions: Entity[];
-  showPreScreen: boolean;
   showError: boolean;
   done: boolean;
+  showReplayOptions = false;
 
   constructor(
     private entitiesService: EntitiesService,
@@ -29,16 +28,29 @@ export class AppComponent implements OnInit {
 
   restart() {
     this.done = false;
+    this.showReplayOptions = false;
     this.sessionService.startSession();
     this.loadMovies();
   }
 
+  recommend() {
+    this.loading = this.entitiesService.recommendations().subscribe(data => {
+      this.posPredictions = data.likes as Entity[];
+      this.negPredictions = data.dislikes as Entity[];
+    });
+  }
+
   ngOnInit(): void {
-    this.loadMovies();
+    if (this.sessionService.completed) {
+      this.showReplayOptions = true;
+      return;
+    }
 
     if (this.sessionService.firstSession) {
       this.modalService.open(PrescreenComponent, {size: 'lg'});
     }
+
+    this.loadMovies();
   }
 
   loadMovies() {
@@ -58,6 +70,7 @@ export class AppComponent implements OnInit {
         if (data.prediction) {
           this.posPredictions = data.likes as Entity[];
           this.negPredictions = data.dislikes as Entity[];
+          this.sessionService.complete();
         } else {
           this.samples = data;
         }

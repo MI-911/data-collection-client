@@ -13,6 +13,10 @@ export class EntitiesService {
     return this.http.get<Entity[]>(`${environment.apiUrl}/movies`);
   }
 
+  recommendations() {
+    return this.http.get<any>(`${environment.apiUrl}/recommendations`);
+  }
+
   feedback(result: SentimentResult) {
     return this.http.post<any>(`${environment.apiUrl}/feedback`, result);
   }

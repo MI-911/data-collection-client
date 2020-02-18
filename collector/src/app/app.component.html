@@ -10,16 +10,26 @@
           <ngb-alert *ngIf="showError" (close)="showError = false" type="danger">We can't connect to our server right
             now 😔 Please try again later.</ngb-alert>
 
-          <ng-container *ngIf="posPredictions; then hasPredictions; else hasEntities">
+          <ng-container *ngIf="posPredictions; then predictions; else game">
           </ng-container>
 
-          <ng-template #hasPredictions>
+          <ng-template #predictions>
             <app-predictions (done)="done=true" (restart)="restart()" [posPredictions]="posPredictions" [negPredictions]="negPredictions"
-              (finished)="initialResult($event)"></app-predictions>
+              (recommend)="recommend()" (finished)="initialResult($event)"></app-predictions>
           </ng-template>
 
-          <ng-template #hasEntities>
-            <app-entity-list [entities]="samples" (finished)="initialResult($event)"></app-entity-list>
+          <ng-template #game>
+            <ng-container *ngIf="showReplayOptions; then replay; else entities">
+            </ng-container>
+
+            <ng-template #replay>
+              <p>It looks like you have played the game before. Would you like to play again or get more recommendations?</p>
+              <app-replay-options (restart)="restart()" (recommend)="recommend()"></app-replay-options>
+            </ng-template>
+
+            <ng-template #entities>
+              <app-entity-list [entities]="samples" (finished)="initialResult($event)"></app-entity-list>
+            </ng-template>
           </ng-template>
         </div>
       </div>
